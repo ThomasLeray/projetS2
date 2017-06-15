@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 313.0, 133.0, 873.0, 573.0 ],
+		"rect" : [ 392.0, 113.0, 957.0, 573.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,13 +38,37 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-22",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"id" : "obj-26",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 871.166626, 161.0, 24.0, 24.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-25",
+					"maxclass" : "ezdac~",
+					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 181.0, 460.0, 158.0, 22.0 ],
+					"patching_rect" : [ 892.833313, 303.5, 45.0, 45.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-24",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 886.666687, 235.0, 142.0, 22.0 ],
 					"style" : "",
-					"text" : "mainSyntheseAudio.maxpat"
+					"text" : "syntheseSonore.maxpat"
 				}
 
 			}
@@ -128,9 +152,9 @@
 					"numinlets" : 3,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "signal" ],
-					"patching_rect" : [ 585.0, 235.0, 212.0, 22.0 ],
+					"patching_rect" : [ 585.0, 235.0, 237.0, 22.0 ],
 					"style" : "",
-					"text" : "lecteurAudio.maxpat sabre_laser.mp3"
+					"text" : "lecteurAudio.maxpat SABRE_LASER.mp3"
 				}
 
 			}
@@ -214,9 +238,9 @@
 					"numinlets" : 3,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "signal" ],
-					"patching_rect" : [ 339.0, 235.0, 192.0, 22.0 ],
+					"patching_rect" : [ 339.0, 235.0, 215.0, 22.0 ],
 					"style" : "",
-					"text" : "lecteurAudio.maxpat tir_laser.mp3"
+					"text" : "lecteurAudio.maxpat TIR_LASER.mp3"
 				}
 
 			}
@@ -238,9 +262,9 @@
 					"id" : "obj-15",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
-					"numoutlets" : 12,
-					"outlettype" : [ "bang", "bang", "int", "int", "bang", "bang", "int", "int", "bang", "bang", "int", "int" ],
-					"patching_rect" : [ 323.0, 15.0, 128.0, 22.0 ],
+					"numoutlets" : 16,
+					"outlettype" : [ "bang", "bang", "int", "int", "bang", "bang", "int", "int", "bang", "bang", "int", "int", "bang", "bang", "int", "int" ],
+					"patching_rect" : [ 474.0, 14.0, 128.0, 22.0 ],
 					"style" : "",
 					"text" : "receptionOSC.maxpat"
 				}
@@ -313,9 +337,9 @@
 					"numinlets" : 3,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "signal" ],
-					"patching_rect" : [ 7.0, 235.0, 245.0, 22.0 ],
+					"patching_rect" : [ 7.0, 235.0, 273.0, 22.0 ],
 					"style" : "",
-					"text" : "lecteurAudio.maxpat marche_imperiale.mp3"
+					"text" : "lecteurAudio.maxpat MARCHE_IMPERIALE.mp3"
 				}
 
 			}
@@ -470,6 +494,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-26", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-15", 12 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-4", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -591,6 +624,35 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-25", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"order" : 0,
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-25", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"order" : 1,
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-24", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-26", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-8", 2 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -657,9 +719,15 @@
 
 			}
  ],
+		"parameters" : 		{
+			"obj-24::obj-10" : [ "live.gain~[2]", "live.gain~", 0 ],
+			"obj-24::obj-9" : [ "live.gain~[1]", "live.gain~", 0 ],
+			"obj-24::obj-8" : [ "live.gain~", "live.gain~", 0 ]
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "lecteurAudio.maxpat",
-				"bootpath" : "/Volumes/i160164/S2 Signal Projet Max/projetS2-master/demo-TS/regieAudio/patchers",
+				"bootpath" : "~/Documents/projetS2/votreAppli/regieAudio/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -671,37 +739,13 @@
 			}
 , 			{
 				"name" : "receptionOSC.maxpat",
-				"bootpath" : "~/Desktop",
+				"bootpath" : "~/Documents/projetS2/votreAppli/regieAudio/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "mainSyntheseAudio.maxpat",
-				"bootpath" : "/Volumes/i160164/S2 Signal Projet Max/projetS2-master/ressourcesMAX",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "syntheseSoustractive.maxpat",
-				"bootpath" : "/Volumes/i160164/S2 Signal Projet Max/projetS2-master/ressourcesMAX",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "osc.maxpat",
-				"bootpath" : "/Volumes/i160164/S2 Signal Projet Max/projetS2-master/ressourcesMAX",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "filtrage.maxpat",
-				"bootpath" : "/Volumes/i160164/S2 Signal Projet Max/projetS2-master/ressourcesMAX",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "ADSR.maxpat",
-				"bootpath" : "/Volumes/i160164/S2 Signal Projet Max/projetS2-master/ressourcesMAX",
+				"name" : "syntheseSonore.maxpat",
+				"bootpath" : "~/Documents/projetS2/votreAppli/regieAudio/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
